@@ -1,0 +1,2 @@
+Primera Recomendación: Usar Tailwind como libreria de CSS.
+Segunda Recomendación: Usar ReactJS como framework para el proyecto
