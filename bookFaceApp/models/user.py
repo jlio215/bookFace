@@ -14,14 +14,17 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, username, password):
-        user = self.create_user(
+def create_superuser(self, username, password):
+    """
+    Creates and saves a superuser with the given username and password.
+    """
+    user = self.create_user(
         username=username,
         password=password,
-        )
-        user.is_admin = True
-        user.save(using=self._db)
-        return user
+    )
+    user.is_admin = True
+    user.save(using=self._db)
+    return user       
 
 class User(AbstractBaseUser, PermissionsMixin):
     id = models.BigAutoField(primary_key=True)
@@ -29,11 +32,16 @@ class User(AbstractBaseUser, PermissionsMixin):
     password = models.CharField('Password', max_length = 256)
     name = models.CharField('Name', max_length = 30)
     email = models.EmailField('Email', max_length = 100)
+    idtype = models.CharField('ID Type', max_length = 300)
+    idnumber = models.CharField('ID Number', max_length = 30)
+    city = models.CharField('City', max_length = 30)
+    address = models.CharField('Address', max_length = 50)
 
     def save(self, **kwargs):
         some_salt = 'mMUj0DrIK6vgtdIYepkIxN'
         self.password = make_password(self.password, some_salt)
         super().save(**kwargs)
         
-        objects = UserManager()
-        USERNAME_FIELD = 'username'
+    objects = UserManager()
+    USERNAME_FIELD = 'username'
+    
