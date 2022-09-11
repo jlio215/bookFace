@@ -1,5 +1,5 @@
 from django.db import models
-#from .sales_has_products import ventas
+from .sales_has_products import ventas
 #from .kindproduct import nombretipodeproducto
 #from .inventories import idinventarios
 
@@ -23,7 +23,7 @@ class products(models.Model):
     description=models.CharField(maxlength=250) 
     #idAccount = models.ForeignKey(nombretipodeproducto, related_name='idtipoproducto', on_delete=models.CASCADE)
     #inventarios = models.ForeignKey(inventories, related_name='idinventarios', on_delete=models.CASCADE)    
-    #ventas = models.ForeignKey(ventas, related_name='idventas', on_delete=models.CASCADE)
+    ventas = models.ForeignKey(ventas, related_name='idventas', on_delete=models.CASCADE)
     #products = models.ForeignKey(products_has_categories, related_name='idproducts', on_delete=models.CASCADE)
     #idAccount = models.ForeignKey(User, related_name='account', on_delete=models.CASCADE)
     #idAccount = models.ForeignKey(User, related_name='account', on_delete=models.CASCADE)
