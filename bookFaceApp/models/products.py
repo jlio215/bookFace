@@ -1,8 +1,9 @@
 from django.db import models
 from .sales_has_products import ventas
 #from .kindproduct import nombretipodeproducto
-#from .inventories import idinventarios
-
+from .inventario import inventory
+from .tipoproducto import product_type
+from .ventas import ventas
 
 class products(models.Model):
     idproducts = models.AutoField(primary_key=True)
@@ -21,9 +22,9 @@ class products(models.Model):
     price= models.DecimalField(max_digits=6, decimal_places=3)
     visits= models.BigIntegerField()
     description=models.CharField(maxlength=250) 
-    #idAccount = models.ForeignKey(nombretipodeproducto, related_name='idtipoproducto', on_delete=models.CASCADE)
-    #inventarios = models.ForeignKey(inventories, related_name='idinventarios', on_delete=models.CASCADE)    
-    ventas = models.ForeignKey(ventas, related_name='idventas', on_delete=models.CASCADE)
+    tipoProducto = models.ForeignKey(product_type, related_name='tipo_producto', on_delete=models.CASCADE)
+    cantidadExistencia = models.ForeignKey(inventory, related_name='existencias', on_delete=models.CASCADE)    
+    ventas = models.ForeignKey(ventas, related_name='ventas', on_delete=models.CASCADE)
     #products = models.ForeignKey(products_has_categories, related_name='idproducts', on_delete=models.CASCADE)
     #idAccount = models.ForeignKey(User, related_name='account', on_delete=models.CASCADE)
     #idAccount = models.ForeignKey(User, related_name='account', on_delete=models.CASCADE)
