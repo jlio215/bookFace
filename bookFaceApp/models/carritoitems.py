@@ -5,10 +5,10 @@ from .carritocompras import Cart
 # Create your models here.
 
 class Cartitem(models.Model):
-    sku = models.CharField('Sesion', max_length=45, unique=True)
-    price = models.DecimalField('Price', max_length=20)
-    descuento = models.DecimalField('Descuento', max_len=10)
-    cantidad = models.IntegerField('Cantidad', max_length=10)
-    fechacreacion = models.DateField('FechaCreacion', max_length=16)
-    fechaactualizacion = models.DateField('FechaActualizacion', max_length=16)
+    idCarItem = models.BigAutoField(primary_key=True)
+    price = models.IntegerField(default=0)
+    descuento = models.IntegerField(default=0)
+    cantidad = models.IntegerField(default=0)
+    fechacreacion = models.DateTimeField()
+    fechaactualizacion = models.DateTimeField()
     carritocompras = models.ForeignKey(Cart, related_name='cartItem', on_delete=models.CASCADE)

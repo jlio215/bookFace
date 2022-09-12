@@ -3,4 +3,4 @@ from.user import User
 
 class product_type(models.Model):
     id = models.BigAutoField(primary_key=True)
-    tipoProducto = models.CharField(maxlength=60)
+    tipoProducto = models.CharField(max_length=60)

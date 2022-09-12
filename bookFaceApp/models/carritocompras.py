@@ -4,8 +4,8 @@ from .user import User
 
 # Create your models here.
 class Cart(models.Model):
-    sessionid = models.CharField('Sesion', max_length=100, unique=True)
+    idCart = models.BigAutoField(primary_key=True)
     status = models.CharField('Status', max_length=45)
-    fechacreacion = models.DateField('FechaCreacion', max_length=16)
-    fechaactualizacion = models.DateField('FechaActualizacion', max_length=16)
-    username = models.ForeignKey(User, related_name='id', on_delete=models.CASCADE)
+    fechaCreacion = models.DateTimeField()
+    fechaActualizacion = models.DateTimeField()
+    idUser = models.ForeignKey(User, related_name='userIds', on_delete=models.CASCADE)
