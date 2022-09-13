@@ -1,0 +1,1 @@
+from .inventorySerializer import inventorySerializer
