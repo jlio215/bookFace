@@ -1,7 +1,7 @@
-from bookFaceApp.models.inventario import inventory
+from bookFaceApp.models.inventory import Inventory
 from rest_framework import serializers
 
-class inventarioSerializer(serializers.ModelSerializer):
+class inventorySerializer(serializers.ModelSerializer):
     class Meta:
-        model = inventory
-        fields = ['idInventory']
+        model = Inventory
+        fields = ['inventory', 'quantity', 'isbn', 'purchasedQuantity', 'soldQuantity']
