@@ -3,7 +3,7 @@ from .sales_has_products import ventas
 #from .kindproduct import nombretipodeproducto
 from .inventario import inventory
 from .tipoproducto import product_type
-from .ventas import ventas
+from .sales import ventas
 
 class products(models.Model):
     idproducts = models.AutoField(primary_key=True)
