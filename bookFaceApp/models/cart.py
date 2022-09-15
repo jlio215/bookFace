@@ -1,7 +1,7 @@
 from unittest.util import _MAX_LENGTH
 from django.db import models
 from .user import User
-from .sales import sales
+from .sales import Sales
 
 # Create your models here.
 class Cart(models.Model):
@@ -13,4 +13,4 @@ class Cart(models.Model):
     discount = models.DecimalField( max_digits = 5, decimal_places = 2)
     quantity = models.IntegerField(default=0)
     user = models.ForeignKey(User, related_name='user1', on_delete=models.CASCADE)
-    sale = models.ForeignKey(sales, related_name='sale1', on_delete=models.CASCADE)
+    sale = models.ForeignKey(Sales, related_name='sale1', on_delete=models.CASCADE)

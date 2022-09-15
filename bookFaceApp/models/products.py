@@ -1,9 +1,9 @@
 from django.db import models
 from .inventory import Inventory
-from .sales import sales
+from .sales import Sales
 from .user import User
 
-class products(models.Model):
+class Products(models.Model):
     products = models.AutoField(primary_key=True)
     name_prod = models.CharField(max_length=90)
     author= models.CharField(max_length=45)

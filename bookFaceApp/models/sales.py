@@ -1,6 +1,6 @@
 from django.db import models
 
-class sales(models.Model):
+class Sales(models.Model):
     sale = models.AutoField(primary_key=True)
     dateSales = models.DateTimeField()
     amount = models.IntegerField(default=0)

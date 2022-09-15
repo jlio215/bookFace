@@ -61,6 +61,8 @@ REST_FRAMEWORK = {
     )
 }
 
+AUTH_USER_MODEL = 'bookFaceApp.User'
+
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
@@ -99,10 +101,10 @@ WSGI_APPLICATION = 'bookFace.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'dal6fqg35fjgqk',
-    'USER': 'qwmbvuhxtexxsq',
-    'PASSWORD': '9ff50a82a763dea9291689ce4fc80a79ed7cf1f501142e28741e465eb572c8d3',
-    'HOST': 'ec2-54-204-241-136.compute-1.amazonaws.com',
+    'NAME': 'd4e2cc54go8luo',
+    'USER': 'xrkwxiytdvfbjg',
+    'PASSWORD': '26564f0012705944c5752a55c344697882c861229c61bc35315b1fe4e64f9b75',
+    'HOST': 'ec2-3-214-2-141.compute-1.amazonaws.com',
     'PORT': '5432',
 }
 }
