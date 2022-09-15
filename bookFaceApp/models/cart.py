@@ -12,5 +12,5 @@ class Cart(models.Model):
     price = models.DecimalField( max_digits = 5, decimal_places = 2)
     discount = models.DecimalField( max_digits = 5, decimal_places = 2)
     quantity = models.IntegerField(default=0)
-    user = models.ForeignKey(User, related_name='user1', on_delete=models.CASCADE)
-    sale = models.ForeignKey(Sales, related_name='sale1', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    sale = models.ForeignKey(Sales,  on_delete=models.CASCADE)
