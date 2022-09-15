@@ -99,10 +99,10 @@ WSGI_APPLICATION = 'bookFace.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'dc41l6753c3sqk',
-    'USER': 'ahjqnpymqvjlei',
-    'PASSWORD': '0363f5fe5462974e63f18bff61449b55cbe6f3f43248c243cfe2d179923300b8',
-    'HOST': 'ec2-107-23-76-12.compute-1.amazonaws.com',
+    'NAME': 'dal6fqg35fjgqk',
+    'USER': 'qwmbvuhxtexxsq',
+    'PASSWORD': '9ff50a82a763dea9291689ce4fc80a79ed7cf1f501142e28741e465eb572c8d3',
+    'HOST': 'ec2-54-204-241-136.compute-1.amazonaws.com',
     'PORT': '5432',
 }
 }

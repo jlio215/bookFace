@@ -1,5 +1,4 @@
 from django.db import models
-from .user import User
 
 class Inventory(models.Model):
     inventory = models.BigAutoField(primary_key=True)
