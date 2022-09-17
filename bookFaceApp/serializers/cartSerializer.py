@@ -4,4 +4,4 @@ from rest_framework import serializers
 class carritocomprasSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cart
-        fields = ['sessionId','status','creationAt','updateAt','price','discount','quantity']
+        fields = ['cart','status','creationAt','updateAt','price','discount','quantity']
