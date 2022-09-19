@@ -2,6 +2,9 @@ from django.urls import path
 from bookFaceApp import views
  
 urlpatterns = [
-    path('', views.ProductListCreateView.as_view()),    
-    #path('<int:pk>/', views.cartDetailView.as_view()),    
+    path('inventory/', views.InventoryCreateView.as_view()),
+    path('products/', views.productsView.as_view()),
+    path('cart/', views.cartView.as_view()),
+    path('sales/', views.salesView.as_view())
+
 ]
