@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
  
 from bookFaceApp.models.inventory import Inventory
-from bookFaceApp.serializers.inventorySerializer import inventorySerializer
+from bookFaceApp.serializers.inventorySerialiazer import inventorySerializer
 
 class InventoryCreateView(APIView):
     permission_classes = (IsAuthenticated,)
