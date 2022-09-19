@@ -54,10 +54,10 @@ MIDDLEWARE = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-    'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.AllowAny',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-    'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
 
@@ -98,17 +98,34 @@ WSGI_APPLICATION = 'bookFace.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#    'NAME': 'd4e2cc54go8luo',
+#    'USER': 'xrkwxiytdvfbjg',
+#    'PASSWORD': '26564f0012705944c5752a55c344697882c861229c61bc35315b1fe4e64f9b75',
+#    'HOST': 'ec2-3-214-2-141.compute-1.amazonaws.com',
+#    'PORT': '5432',
+#}
+#}
+ 
+'''
+Conexion a las Base de datos de mike
+'''    
+
+
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'd4e2cc54go8luo',
-    'USER': 'xrkwxiytdvfbjg',
-    'PASSWORD': '26564f0012705944c5752a55c344697882c861229c61bc35315b1fe4e64f9b75',
-    'HOST': 'ec2-3-214-2-141.compute-1.amazonaws.com',
+    'NAME': 'd3a3a22vidf3o8',
+    'USER': 'ajehbwbcjxjyjd',
+    'PASSWORD': '87596530018680d77caae7bbd38cbd16a3092c4e9894f8ff668a1f39697e08c2',
+    'HOST': 'ec2-34-207-12-160.compute-1.amazonaws.com',
     'PORT': '5432',
 }
 }
 
+APPEND_SLASH=False
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -150,3 +167,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+import django_heroku
+django_heroku.settings(locals())

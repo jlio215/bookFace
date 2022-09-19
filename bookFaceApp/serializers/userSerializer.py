@@ -1,26 +1,31 @@
-from itertools import product
+#from itertools import product
 from rest_framework import serializers
 from bookFaceApp.models.user import User
-from bookFaceApp.models.products import products
-from bookFaceApp.serializers.productSerializer import productSerializer
+#from bookFaceApp.models.account import Account
+#from bookFaceApp.serializers.accountSerializer import AccountSerializer
+#from bookFaceApp.models.products import products
+#from bookFaceApp.serializers.productSerializer import productSerializer
 
 
 class UserSerializer(serializers.ModelSerializer):
-    type = TypeSerializer()
+    #account = AccountSerializer()
+    #type = TypeSerializer()
     class Meta:
         model = User 
-        fields = ['id', 'username', 'password', 'name', 'email', 'idtype', 'idnumber', 'city', 'address', 'type']
+        fields = ['id', 'username', 'password', 'name', 'email', 'idtype', 'idnumber', 'city', 'address']#, 'account']
 
     def create(self, validated_data):
-        typeData = validated_data.pop('type')
+        #accountData = validated_data.pop('account')
+        #typeData = validated_data.pop('type')
         userInstance = User.objects.create(**validated_data)
-        Type.objects.create(user=userInstance, **typeData)
+        #Account.objects.create(user=userInstance, **accountData)
         return userInstance
 
 
     def to_representation(self, obj):
         user = User.objects.get(id=obj.id)
-        type = Type.objects.get(user=obj.id)
+        #account = Account.objects.get(user=obj.id)
+        #type = Type.objects.get(user=obj.id)
         return {
                     'id': user.id,
                     'username': user.username,
@@ -30,13 +35,15 @@ class UserSerializer(serializers.ModelSerializer):
                     'idnumber': user.idnumber,
                     'city': user.city,
                     'address': user.address,
-                    'type': {
-                        'id': type.id,
-                        'user_role': type.user_role,
-                        'right': type.right,
-                        'logs': type.logs
+                    #'account': {
+                    #            'id': account.id,
+                    #            'balance': account.balance,
+                    #            'lastChangeDate': account.lastChangeDate,
+                    #            'isActive': account.isActive
+                    #            }    
+                    
 
          }
 
-}   
+  
  
