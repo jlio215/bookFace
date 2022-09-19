@@ -1,7 +1,7 @@
-from bookFaceApp.models.sales import sales
+from bookFaceApp.models.sales import Sales
 from rest_framework import serializers
 
 class salesSerializer(serializers.ModelSerializer):
     class Meta:
-        model = sales
+        model = Sales
         fields = ['sales', 'dateSales', 'amount', 'totalOrder']
