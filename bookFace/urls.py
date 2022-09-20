@@ -25,4 +25,5 @@ urlpatterns = [
     path('user/', views.UserCreateView.as_view()),
     path('user/<int:pk>/', views.UserDetailView.as_view()),
     path('product/', include('bookFaceApp.urls')),
+    path('cart/', include('bookFaceApp.urls')),
 ]
