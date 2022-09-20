@@ -7,7 +7,7 @@ from bookFaceApp.models.cart import Cart
 from bookFaceApp.serializers.cartSerializer import cartSerializer
  
 class cartView(APIView):
-    permission_classes = (IsAuthenticated,)
+    #permission_classes = (IsAuthenticated,)
    
     queryset = Cart.objects.all()
     serializer_class = cartSerializer

@@ -7,7 +7,7 @@ from bookFaceApp.models.products import Products
 from bookFaceApp.serializers.productSerilizer import productoSerializer
  
 class productsView(APIView):
-    permission_classes = (IsAuthenticated,)
+    #permission_classes = (IsAuthenticated,)
    
     queryset = Products.objects.all()
     serializer_class = productoSerializer
