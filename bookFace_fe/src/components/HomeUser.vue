@@ -1,5 +1,5 @@
 <template>
-    <div  class="information">
+    <div v-for="product in arrayProduct" class="information">
         <h1>Información del libro</h1>
         <h2>Nombre: <span>{{name_prod}}</span></h2>
         <h2>precio: <span>{{price}} COP </span></h2>
@@ -10,6 +10,8 @@
 <script>
    import jwt_decode from "jwt-decode";
    import axios from 'axios';
+import { objectExpression } from "@babel/types";
+   
    export default {
     name: "Products",
     data: function(){
@@ -29,17 +31,25 @@
             await this.verifyToken();
             let token = localStorage.getItem("token_access");
             
-            axios.get(`http://127.0.0.1:8000/products/1/`, {headers: {'Authorization': `Bearer ${token}`}})
+            axios.get(`http://127.0.0.1:8000/products/`, {headers: {'Authorization': `Bearer ${token}`}})
                 .then((result) => {
-                    this.name_prod = result.data.name_prod;
+                    const productsArr = [];
+                    Object.keys(this.result).forEach( key => {
+                        const work = this.result[key];
+                        productsArr.push(work);
+
+                    })
+                    alert(productsArr)
+                    
+                   /* this.name_prod = result.data.name_prod;
                     this.author = result.data.author;
-                    this.price = result.data.price;
+                    this.price = result.data.price;*/
                     this.loaded = true;
                 })
-                    .catch((e) => {
-                        alert (e)
-                        this.$emit('logOut');
-                    });
+                .catch((e) => {
+                    alert (e)
+                    this.$emit('logOut');
+                });
         },
             verifyToken: function () {
                 return axios.post("http://127.0.0.1:8000/refresh/", {refresh: localStorage.getItem("token_refresh")}, {headers: {}}

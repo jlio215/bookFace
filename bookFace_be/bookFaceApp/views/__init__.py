@@ -4,3 +4,4 @@ from .ProductsView import productsView
 from .InventoryView import InventoryCreateView
 from .CartView import cartView
 from .SalesView import salesView
+from .ProductsHomeView import productsHomeView
