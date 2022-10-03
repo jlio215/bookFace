@@ -2,7 +2,8 @@
     <div class="addBook_user">
         <div class="container_addBook_user">
         <h2>Añadir Libro</h2>
-        <form v-on:submit.prevent="processAddBook" >    
+        <div class="">
+            <form v-on:submit.prevent="processAddBook" >    
             <input autocomplete="off" type="text" v-model="product.name_prod" placeholder="Nombre Producto">
             <br>
             <input autocomplete="off" type="text" v-model="product.author" placeholder="Nombre Autor">
@@ -44,12 +45,15 @@
             <button type="submit">Añadir</button>
         </form>
         </div>
+        </div>
     </div>
     </template>
     <script>
     import axios from 'axios';
     export default {
+
         name: "AddBook",
+        
         data: function(){
             return {
                 product: {
@@ -73,73 +77,73 @@
                     inventory_id: "",
                     sale_id: "",
                     user_id: ""
-
-                    // username: "",
-                    // password: "",
-                    // name: "",
-                    // email: "",
-                    // account: {
-                    //     lastChangeDate: (new Date()).toJSON().toString(),
-                    //     balance: 0,
-                    //     isActive: true
-                    // }
                 }
             }
         },
         methods: {
-            processAddBook: function(){
+            processAddBook: 
+                async function (req) {
+                    if (localStorage.getItem("token_access") === null || localStorage.getItem("token_refresh") === null) {
+                    this.$emit('logOut');
+                    return;
+                }
+                    await this.verifyToken();
+                    let token = localStorage.getItem("token_access");
+
                 axios.post(
-                    "http://127.0.0.1:8000/products/",
+                    "http://127.0.0.1:8000/createProduct/", {headers: {'Authorization': `Bearer ${token}`}}
+,
                     this.product,
                     {headers: {}}
                 )
     
-            .then((result) => {
-                let dataAddBook = {
-                    product: this.product.name_prod,
-                    author: this.product.author,
-                    editorial: this.product.editorial,
-                    category: this.product.category,
-                    type_prod: this.product.type_prod,
-                    num_page: this.product.num_page,
-                    isbn: this.product.isbn,
-                    state: this.product.state,
-                    rank: this.product.rank,
-                    format_prod: this.product.format_prod,
-                    presentation: this.product.presentation,
-                    image: this.product.image,
-                    price: this.product.price,
-                    description: this.product.description,
-                    name_cat: this.product.name_cat,
-                    subcategory: this.product.subcategory,
-                    inventory_id: this.product.inventory_id,
-                    sale_id: this.product.sale_id,
-                    user_id: this.product.user_id
+                .then((result) => {
+                    let dataAddBook = {
+                        product: this.product.name_prod,
+                        author: this.product.author,
+                        editorial: this.product.editorial,
+                        category: this.product.category,
+                        type_prod: this.product.type_prod,
+                        num_page: this.product.num_page,
+                        isbn: this.product.isbn,
+                        state: this.product.state,
+                        rank: this.product.rank,
+                        format_prod: this.product.format_prod,
+                        presentation: this.product.presentation,
+                        image: this.product.image,
+                        price: this.product.price,
+                        description: this.product.description,
+                        name_cat: this.product.name_cat,
+                        subcategory: this.product.subcategory,
+                        inventory_id: this.product.inventory_id,
+                        sale_id: this.product.sale_id,
+                        user_id: this.product.user_id,
+                        token_access: result.data.access,
+                        token_refresh: result.data.refresh,
 
-                    // username: this.user.username,
-                    // token_access: result.data.access,
-                    // token_refresh: result.data.refresh,
-                }
-                this.$emit('completedAddBook', dataAddBook)
+                        // token_access: result.data.access,
+                        // token_refresh: result.data.refresh,
+                    }
+                    this.$emit('completedAddBook', dataAddBook)
             })
-    
-            .catch((error) => {
-                console.log(error);
-                alert(error, "ERROR: Fallo en el registro de libros.");
-            });
+                .catch((error) => {
+                    console.log(error);
+                    alert(error, "ERROR: Fallo en el registro de libros.");
+                });
             },
+
             verifyToken: function () {
                 return axios.post("http://127.0.0.1:8000/refresh/", {refresh: localStorage.getItem("token_refresh")}, {headers: {}}
-            )
-            .then((result) => {
-                localStorage.setItem("token_access", result.data.access);
-            })
-            .catch(() => {
-                this.$emit('logOut');
-            });
-            }
+                )
+                .then((result) => {
+                    localStorage.setItem("token_access", result.data.access);
+                })
+                .catch(() => {
+                    this.$emit('logOut');
+                });
+                }
+            },
         }
-    }
     </script>
     
     <style>

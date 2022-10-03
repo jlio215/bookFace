@@ -4,6 +4,7 @@ from bookFaceApp import views
 urlpatterns = [
     path('inventory/', views.InventoryCreateView.as_view()),
     path('products/', views.productsHomeView.as_view()),
+    path('createProduct/', views.productsView.as_view()),
     path('cart/', views.cartView.as_view()),
     path('sales/', views.salesView.as_view()),
     path('inventory/<int:pk>/', views.InventoryCreateView.as_view()),
